@@ -122,6 +122,24 @@ botoes[cor].addEventListener('click', () => {
     piscarBotao(cor);
     verificarJogada(cor);
 });
+
+// Oculta o Footer
+let lastScrollTop = 1;
+const footer = document.querySelector('footer');
+
+window.addEventListener('scroll', function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+    // Rolar para baixo – esconder
+    footer.classList.add('hide-footer');
+    } else {
+    // Rolar para cima – mostrar
+    footer.classList.remove('hide-footer');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita valores negativos
+});
 });
 
 botaoIniciar.addEventListener('click', iniciarJogo);
